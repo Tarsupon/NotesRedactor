@@ -1,0 +1,70 @@
+$border-color: #a2b9bf;
+$border-color-focused: #0fcbfc;
+$border-radius: 10px;
+$margin: 10px;
+[contenteditable]:focus {
+  outline: 0px solid transparent;
+}
+
+body {
+  font-family: "Comic Sans MS", sans-serif;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  border: 2px solid $border-color;
+  border-radius: $border-radius;
+}
+
+form .data li input {
+  float: right;
+  cursor: pointer;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+}
+
+.tags {
+  display: flex;
+}
+
+.tag {
+  margin: $margin;
+  border-bottom: 2px solid $border-color;
+  border-radius: $border-radius;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.tag:focus {
+  border-radius: $border-radius;
+  border: 2px solid $border-color-focused;
+
+}
+
+.todoRecord {
+  display: flex;
+  justify-content: space-around;
+  border: 1px solid $border-color;
+  border-radius: $border-radius;
+  margin: $margin;
+}
+
+.todoRecordContent {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.button {
+  cursor: pointer;
+}

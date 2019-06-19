@@ -1,0 +1,70 @@
+<!--The content below is only a placeholder and can be replaced.-->
+
+<div class="container">
+  <form #todoForm= "ngForm"(submit)="todoSubmit(todoForm.value); todoForm.resetForm()" >
+    <div class="form-group">
+      <h1 class="text-center ">Todo App</h1>
+      <div *ngIf="filteredRecords !== null" class="filteredRecords">
+        <div class="todoRecord" *ngFor="let todo of filteredRecords">
+          <div class="todoRecordContent">
+            <input matInput type="text"
+                   #recordText
+                   (keyup.enter)="addNewTags(todo, recordText.value)"
+                   [value]="todo.text"
+            >
+            <div  class="tags">
+              <div contenteditable="true" class="tag" *ngFor="let tag of todo.tags">
+                {{tag}}
+                <span contenteditable="false"
+                      class="button"
+                      value="delete"
+                      (click)="deleteTag(tag)"
+                ><mat-icon>clear</mat-icon></span>
+              </div>
+            </div>
+          </div>
+          <span (click)="deleteItem(todo)"><mat-icon>clear</mat-icon></span>
+        </div>
+      </div>
+
+      <input matInput
+             type="text"
+             placeholder="filter by tags"
+             #filter value="#"
+             (change)="filterRecords(filter.value)"
+      >
+      <div class="input-group-prepend">
+        <mat-form-field>
+        <input matInput type="text" #todo  placeholder="Add Todo" name="todo" ngModel>
+        </mat-form-field>
+        <span class="button"(click)="addTodo(todo.value)"><mat-icon>add</mat-icon></span>
+
+      </div>
+    </div>
+    <div class="data">
+        <div class="todoRecord" *ngFor="let todo of todoArray">
+          <div class="todoRecordContent">
+            <input matInput
+                   type="text"
+                   #recordText
+                   (keyup.enter)="addNewTags(todo, recordText.value)"
+                   [value]="todo.text"
+            >
+            <div  class="tags">
+              <div contenteditable="true" class="tag" *ngFor="let tag of todo.tags">
+                {{tag}}
+                <span contenteditable="false"
+                      class="button"
+                      value="delete"
+                      (click)="deleteTag(tag)"
+                ><mat-icon>clear</mat-icon></span>
+              </div>
+            </div>
+          </div>
+          <span class="button" (click)="deleteItem(todo)"><mat-icon>clear</mat-icon></span>
+        </div>
+    </div>
+  </form>
+
+</div>
+<router-outlet></router-outlet>
